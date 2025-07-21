@@ -441,22 +441,6 @@
             border-color: #ff6b9d;
         }
 
-        /* Time input container */
-        .time-container {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .time-input {
-            flex: 2;
-        }
-
-        .ampm-select {
-            flex: 1;
-            min-width: 80px;
-        }
-
         .contact-info {
             background: linear-gradient(135deg, #ff6b9d, #c44569);
             color: white;
@@ -530,6 +514,96 @@
             text-align: center;
             display: none;
             animation: fadeIn 0.3s ease;
+        }
+
+        /* Location Section */
+        .location {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #f0f8ff, #ffeef8);
+        }
+
+        .location-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+            align-items: center;
+        }
+
+        .location-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .location-info h3 {
+            color: #c44569;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .location-details {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: linear-gradient(135deg, #ffeef8, #f8f9fa);
+            border-radius: 10px;
+            border-left: 4px solid #ff6b9d;
+        }
+
+        .location-details i {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #c44569;
+            margin-top: 0.2rem;
+        }
+
+        .location-details div {
+            flex: 1;
+        }
+
+        .location-details strong {
+            color: #c44569;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .directions-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #4285f4, #34a853);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(66, 133, 244, 0.3);
+            margin-top: 1rem;
+        }
+
+        .directions-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(66, 133, 244, 0.4);
+        }
+
+        .map-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            height: 400px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 20px;
         }
 
         /* Footer */
@@ -608,6 +682,15 @@
                 gap: 2rem;
             }
 
+            .location {
+                padding: 3rem 1rem;
+            }
+
+            .location-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
             .time-container {
                 flex-direction: column;
                 gap: 0.5rem;
@@ -649,8 +732,18 @@
             }
 
             .contact-form,
-            .contact-info {
+            .contact-info,
+            .location-info {
                 padding: 1.5rem;
+            }
+
+            .location-content {
+                grid-template-columns: 1fr;
+                min-width: 300px;
+            }
+
+            .map-container {
+                height: 300px;
             }
         }
 
@@ -678,6 +771,7 @@
                 <li><a href="#services">Services</a></li>
                 <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="#location">Location</a></li>
             </ul>
             <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
             <div class="mobile-nav" id="mobileNav">
@@ -685,6 +779,7 @@
                 <a href="#services" onclick="closeMobileMenu()">Services</a>
                 <a href="#gallery" onclick="closeMobileMenu()">Gallery</a>
                 <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+                <a href="#location" onclick="closeMobileMenu()">Location</a>
             </div>
         </nav>
     </header>
@@ -774,116 +869,108 @@
                     <div class="gallery-overlay">
                         <span>🎨 Hair Coloring</span>
                     </div>
-                </div>
-                <div class="gallery-item" onclick="openModal('https://i.postimg.cc/9MZBm0nF/Whats-App-Image-2025-06-19-at-10-18-46-AM.jpg')">
-                    <img src="https://i.postimg.cc/9MZBm0nF/Whats-App-Image-2025-06-19-at-10-18-46-AM.jpg" alt="Facial Treatments">
-                    <div class="gallery-overlay">
-                        <span>🧴 Facial Treatments</span>
-                    </div>
-                </div>
-                <div class="gallery-item" onclick="openModal('https://i.postimg.cc/9XyxV86t/Whats-App-Image-2025-06-19-at-10-18-46-AM-1.jpg')">
-                    <img src="https://i.postimg.cc/9XyxV86t/Whats-App-Image-2025-06-19-at-10-18-46-AM-1.jpg" alt="Beauty Services">
-                    <div class="gallery-overlay">
-                        <span>💅 Beauty Services</span>
-                    </div>
-                </div>
-			</div>
-<Center><h1>To see my work, visit my Facebook page.</h1>
-<p><a href="https://www.facebook.com/profile.php?id=61569380781558">Visit my Facebook page</a></p>
-</Center>
-        </div>
-    </section>
+               <div class="gallery-item" onclick="openModal('https://i.postimg.cc/fb6KQm5r/Whats-App-Image-2025-06-19-at-10-18-45-AM.jpg')">
+                   <img src="https://i.postimg.cc/fb6KQm5r/Whats-App-Image-2025-06-19-at-10-18-45-AM.jpg" alt="Nail Art">
+                   <div class="gallery-overlay">
+                       <span>💅 Nail Art</span>
+                   </div>
+               </div>
+           </div>
+		</div>
+		 <Center><h1>To see my work, visit my <a href="https://www.facebook.com/profile.php?id=61569380781558">Facebook page</a>.</h1></Center>
+   </section>
 
-    <!-- Image Modal -->
-    <div id="imageModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <img id="modalImage" src="" alt="Gallery Image">
-        </div>
-    </div>
+   <!-- Modal for Gallery Images -->
+   <div id="imageModal" class="modal" onclick="closeModal()">
+       <div class="modal-content">
+           <span class="close" onclick="closeModal()">&times;</span>
+           <img id="modalImage" src="" alt="Gallery Image">
+       </div>
+   </div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Contact Us</h2>
-            <div class="contact-grid">
-                <div class="contact-form">
-                    <h3>Book an Appointment</h3>
-                    <form id="bookingForm">
-                        <div class="form-group">
-                            <label for="name">Name *</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number *</label>
-                            <input type="tel" id="phone" name="phone" required placeholder="0771234567">
-                        </div>
-                        <div class="form-group">
-                            <label for="service">Service *</label>
-                            <select id="service" name="service" required>
-                                <option value="">Select a service</option>
-                                <option value="Hair Styling">Hair Styling</option>
-                                <option value="Makeup Services">Makeup Services</option>
-                                <option value="Nail Art">Nail Art</option>
-                                <option value="Skin Care">Skin Care</option>
-                                <option value="Bridal Makeup">Bridal Makeup</option>
-                                <option value="Special Services">Special Services</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="date">Date *</label>
-                            <input type="date" id="date" name="date" required>
-                        </div>
-<div class="form-group">
-    <label for="time">Preferred Time *</label>
+   <!-- Contact Section -->
+   <section id="contact" class="contact">
+       <div class="container">
+           <h2 class="section-title">Book Your Appointment</h2>
+           <div class="contact-grid">
+               <div class="contact-form">
+                   <h3>Appointment Form</h3>
+                   <form id="appointmentForm">
+                       <div class="form-group">
+                           <label for="name">Full Name</label>
+                           <input type="text" id="name" name="name" required>
+                       </div>
+                       <div class="form-group">
+                           <label for="phone">Phone Number</label>
+                           <input type="tel" id="phone" name="phone" required>
+                       </div>
+                       <div class="form-group">
+                           <label for="service">Service</label>
+                           <select id="service" name="service" required>
+                               <option value="">Select a service</option>
+                               <option value="Hair Styling">Hair Styling</option>
+                               <option value="Makeup Services">Makeup Services</option>
+                               <option value="Nail Art">Nail Art</option>
+                               <option value="Skin Care">Skin Care</option>
+                               <option value="Bridal Makeup">Bridal Makeup</option>
+                               <option value="Special Services">Special Services</option>
+							   <option value="Other Services">Other Services</option>
+                           </select>
+                       </div>
+                       <div class="form-group">
+                           <label for="date">Preferred Date</label>
+                           <input type="date" id="date" name="date" required>
+                       </div>
+                       <div class="form-group">
+    <label for="time">Preferred Time</label>
     <input type="time" id="time" name="time" required>
 </div>
                        <div class="form-group">
                            <label for="message">Additional Notes</label>
-                           <textarea id="message" name="message" rows="4" placeholder="Any special requirements or notes..."></textarea>
+                           <textarea id="message" name="message" rows="4" placeholder="Any special requests or notes..."></textarea>
                        </div>
                        <button type="submit" class="whatsapp-button">
                            <span class="whatsapp-icon">📱</span>
-                           Book via WhatsApp
+                           Send via WhatsApp
                        </button>
                    </form>
-                   <div id="successMessage" class="success-message">
+                   <div class="success-message" id="successMessage">
                        Your appointment request has been sent successfully!
                    </div>
-                   <div id="errorMessage" class="error-message">
+                   <div class="error-message" id="errorMessage">
                        Please fill in all required fields.
                    </div>
                </div>
-               
                <div class="contact-info">
-                   <h3>Get in Touch</h3>
+                   <h3>Contact Information</h3>
                    <div class="contact-item">
-                       <i>📍</i>
-                       <div>
-                           <strong>Address</strong><br>
-                           241/B, Galle road, Moragalla, Aluthgama
-                       </div>
-                   </div>
-                   <div class="contact-item">
-                       <i>📞</i>
+                       <i>📱</i>
                        <div>
                            <strong>Phone</strong><br>
-                           +9477 465 9537
-                       </div>
-                   </div>
-                   <div class="contact-item">
-                       <i>⏰</i>
-                       <div>
-                           <strong>Working Hours</strong><br>
-                           Mon - Sat: 9:00 AM - 7:00 PM<br>
-                           Sun: 10:00 AM - 5:00 PM
+                           +94 70 123 4567
                        </div>
                    </div>
                    <div class="contact-item">
                        <i>📧</i>
                        <div>
                            <strong>Email</strong><br>
-                           dulminiud1234xxx@gmail.com
+                           info@salondulmini.lk
+                       </div>
+                   </div>
+                   <div class="contact-item">
+                       <i>🕒</i>
+                       <div>
+                           <strong>Opening Hours</strong><br>
+                           Monday - Saturday: 9:00 AM - 7:00 PM<br>
+                           Sunday: 9:30 AM - 7:00 PM
+                       </div>
+                   </div>
+                   <div class="contact-item">
+                       <i>📍</i>
+                       <div>
+                           <strong>Address</strong><br>
+                           123 Beauty Street, Kalutara<br>
+                           Western Province, Sri Lanka
                        </div>
                    </div>
                </div>
@@ -891,13 +978,61 @@
        </div>
    </section>
 
+   <!-- Location Section -->
+   <section id="location" class="location">
+       <div class="container">
+           <h2 class="section-title">Visit Our Salon</h2>
+           <div class="location-content">
+               <div class="location-info">
+                   <h3><i>📍</i> Find Us</h3>
+                   <div class="location-details">
+                       <i>🏢</i>
+                       <div>
+                           <strong>Salon Dulmini</strong>
+                           241/B, Galle road, Moragalla,<br> Aluthgama,
+                           Western Province, Sri Lanka
+                       </div>
+                   </div>
+                   <div class="location-details">
+                       <i>🚗</i>
+                       <div>
+                           <strong>Parking</strong>
+                           Free parking available in front of the salon
+                       </div>
+                   </div>
+                   <div class="location-details">
+                       <i>🚌</i>
+                       <div>
+                           <strong>Public Transport</strong>
+                           Easily accessible by bus. Close to Aluthgama bus stand And Moragalla School
+                       </div>
+                   </div>
+                   <a href="https://maps.google.com?q=Kalutara,+Western+Province,+Sri+Lanka" target="_blank" class="directions-button">
+                       Get Directions
+                   </a>
+               </div>
+               <div class="map-container">
+                   <iframe 
+                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63442.89543163634!2d79.9581!3d6.5854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae22f5f6d1c1111%3A0x1111111111111111!2sKalutara%2C%20Sri%20Lanka!5e0!3m2!1sen!2slk!4v1234567890123!5m2!1sen!2slk"
+                       allowfullscreen="" 
+                       loading="lazy" 
+                       referrerpolicy="no-referrer-when-downgrade">
+                   </iframe>
+               </div>
+           </div>
+       </div>
+   </section>
+
    <!-- Footer -->
    <footer>
-       <p>&copy; 2025 Salon Dulmini. All rights reserved. | Designed with 💖 saki graphics</p>
+       <div class="container">
+           <p>&copy; 2025 Salon Dulmini. All rights reserved. | Designed with ❤️ for beautiful you</p>
+       </div>
    </footer>
 
+   <!-- JavaScript -->
    <script>
-       // Mobile menu toggle
+       // Mobile Menu Toggle
        function toggleMobileMenu() {
            const mobileNav = document.getElementById('mobileNav');
            mobileNav.classList.toggle('show');
@@ -908,153 +1043,158 @@
            mobileNav.classList.remove('show');
        }
 
-       // Modal functionality
-       function openModal(imageSrc) {
-           const modal = document.getElementById('imageModal');
-           const modalImg = document.getElementById('modalImage');
-           modal.style.display = 'block';
-           modalImg.src = imageSrc;
-       }
-
-       function closeModal() {
-           const modal = document.getElementById('imageModal');
-           modal.style.display = 'none';
-       }
-
-       // Close modal when clicking outside
-       window.onclick = function(event) {
-           const modal = document.getElementById('imageModal');
-           if (event.target === modal) {
-               closeModal();
-           }
-       }
-
-       // Smooth scrolling
+       // Smooth scrolling for navigation links
        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
            anchor.addEventListener('click', function (e) {
                e.preventDefault();
-               const target = document.querySelector(this.getAttribute('href'));
-               if (target) {
-                   target.scrollIntoView({
-                       behavior: 'smooth',
-                       block: 'start'
+               const targetId = this.getAttribute('href').substring(1);
+               const targetElement = document.getElementById(targetId);
+               
+               if (targetElement) {
+                   const headerHeight = document.querySelector('header').offsetHeight;
+                   const targetPosition = targetElement.offsetTop - headerHeight;
+                   
+                   window.scrollTo({
+                       top: targetPosition,
+                       behavior: 'smooth'
                    });
                }
            });
        });
 
-       // Set minimum date to today
-       document.addEventListener('DOMContentLoaded', function() {
-           const dateInput = document.getElementById('date');
-           const today = new Date().toISOString().split('T')[0];
-           dateInput.min = today;
-           
-           // Fade in animation on scroll
-           const observerOptions = {
-               threshold: 0.1,
-               rootMargin: '0px 0px -50px 0px'
-           };
+       // Gallery Modal Functions
+       function openModal(imageSrc) {
+           const modal = document.getElementById('imageModal');
+           const modalImage = document.getElementById('modalImage');
+           modal.style.display = 'block';
+           modalImage.src = imageSrc;
+           document.body.style.overflow = 'hidden';
+       }
 
-           const observer = new IntersectionObserver(function(entries) {
-               entries.forEach(entry => {
-                   if (entry.isIntersecting) {
-                       entry.target.style.opacity = '1';
-                       entry.target.style.transform = 'translateY(0)';
-                   }
-               });
-           }, observerOptions);
+       function closeModal() {
+           const modal = document.getElementById('imageModal');
+           modal.style.display = 'none';
+           document.body.style.overflow = 'auto';
+       }
 
-           document.querySelectorAll('.service-card').forEach(card => {
-               card.style.opacity = '0';
-               card.style.transform = 'translateY(30px)';
-               card.style.transition = 'all 0.6s ease';
-               observer.observe(card);
-           });
+       // Close modal when clicking outside the image
+       document.getElementById('imageModal').addEventListener('click', function(e) {
+           if (e.target === this) {
+               closeModal();
+           }
+       });
+
+       // Close modal with Escape key
+       document.addEventListener('keydown', function(e) {
+           if (e.key === 'Escape') {
+               closeModal();
+           }
        });
 
        // Form submission
-       document.getElementById('bookingForm').addEventListener('submit', function(e) {
+       document.getElementById('appointmentForm').addEventListener('submit', function(e) {
            e.preventDefault();
            
-           const formData = new FormData(this);
-           const name = formData.get('name').trim();
-           const phone = formData.get('phone').trim();
-           const service = formData.get('service');
-           const date = formData.get('date');
-const time = formData.get('time');
-// Convert 24-hour to 12-hour format for WhatsApp message
-const timeFormatted = formatTime(time);
-           const message = formData.get('message').trim();
+           const name = document.getElementById('name').value;
+           const phone = document.getElementById('phone').value;
+           const service = document.getElementById('service').value;
+           const date = document.getElementById('date').value;
+           const time = document.getElementById('time').value;
+           const ampm = document.getElementById('ampm').value;
+           const message = document.getElementById('message').value;
            
-           // Validation
            if (!name || !phone || !service || !date || !time) {
-               showError();
+               showError('Please fill in all required fields.');
                return;
            }
+           
+           // Format the time
+           const time = document.getElementById('time').value;
+const timeFormatted = time; // 24-hour format ම භාවිතා කරනවා
+           
+           // Create WhatsApp message
+           const whatsappMessage = `Hello! I would like to book an appointment at Salon Dulmini.
+           
+*Appointment Details:*
+Name: ${name}
+Phone: ${phone}
+Service: ${service}
+Date: ${date}
+Time: ${timeFormatted}
+Notes: ${message || 'None'}
 
-           // Format the message for WhatsApp
-           const whatsappMessage = `Hello! I would like to book an appointment at Salon Dulmini:
-
-👤 Name: ${name}
-📞 Phone: ${phone}
-💅 Service: ${service}
-📅 Date: ${date}
-⏰ Time: ${timeFormatted}
-${message ? `📝 Notes: ${message}` : ''}
-
-Thank you!`;
-
+Please confirm my appointment. Thank you!`;
+           
            // WhatsApp number (replace with actual number)
-           const whatsappNumber = '94774659537';
-           const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+           const whatsappNumber = '94701234567';
+           const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
            
            // Open WhatsApp
-           window.open(whatsappUrl, '_blank');
+           window.open(whatsappURL, '_blank');
            
            // Show success message
-           showSuccess();
+           showSuccess('Redirecting to WhatsApp...');
            
-           // Reset form
-           this.reset();
+           // Clear form after short delay
+           setTimeout(() => {
+               document.getElementById('appointmentForm').reset();
+               hideMessages();
+           }, 2000);
        });
 
-       function showSuccess() {
-           const successMsg = document.getElementById('successMessage');
-           const errorMsg = document.getElementById('errorMessage');
-           errorMsg.style.display = 'none';
-           successMsg.style.display = 'block';
-           setTimeout(() => {
-               successMsg.style.display = 'none';
-           }, 5000);
-       }
-	   function formatTime(time24) {
-    const [hours, minutes] = time24.split(':');
-    const hour12 = hours % 12 || 12;
-    const ampm = hours < 12 ? 'AM' : 'PM';
-    return `${hour12}:${minutes} ${ampm}`;
-}
-
-       function showError() {
-           const successMsg = document.getElementById('successMessage');
-           const errorMsg = document.getElementById('errorMessage');
-           successMsg.style.display = 'none';
-           errorMsg.style.display = 'block';
-           setTimeout(() => {
-               errorMsg.style.display = 'none';
-           }, 5000);
+       function showSuccess(message) {
+           const successDiv = document.getElementById('successMessage');
+           const errorDiv = document.getElementById('errorMessage');
+           successDiv.textContent = message;
+           successDiv.style.display = 'block';
+           errorDiv.style.display = 'none';
        }
 
-       // Add some interactive elements
-       document.addEventListener('mousemove', function(e) {
-           const hero = document.querySelector('.hero');
-           const rect = hero.getBoundingClientRect();
-           const x = e.clientX - rect.left;
-           const y = e.clientY - rect.top;
-           
-           if (rect.top <= 0 && rect.bottom >= 0) {
-               const xPercent = (x / rect.width) * 100;
-               const yPercent = (y / rect.height) * 100;
-               hero.style.backgroundPosition = `${xPercent}% ${yPercent}%`;
+       function showError(message) {
+           const successDiv = document.getElementById('successMessage');
+           const errorDiv = document.getElementById('errorMessage');
+           errorDiv.textContent = message;
+           errorDiv.style.display = 'block';
+           successDiv.style.display = 'none';
+       }
+
+       function hideMessages() {
+           document.getElementById('successMessage').style.display = 'none';
+           document.getElementById('errorMessage').style.display = 'none';
+       }
+
+       // Set minimum date to today
+       const today = new Date().toISOString().split('T')[0];
+       document.getElementById('date').setAttribute('min', today);
+
+       // Animation on scroll
+       const observerOptions = {
+           threshold: 0.1,
+           rootMargin: '0px 0px -50px 0px'
+       };
+
+       const observer = new IntersectionObserver(function(entries) {
+           entries.forEach(entry => {
+               if (entry.isIntersecting) {
+                   entry.target.classList.add('fade-in');
+               }
+           });
+       }, observerOptions);
+
+       // Observe all service cards
+       document.querySelectorAll('.service-card').forEach(card => {
+           observer.observe(card);
+       });
+
+       // Header background on scroll
+       window.addEventListener('scroll', function() {
+           const header = document.querySelector('header');
+           if (window.scrollY > 50) {
+               header.style.background = 'linear-gradient(135deg, rgba(255,107,157,0.95), rgba(196,69,105,0.95))';
+               header.style.backdropFilter = 'blur(10px)';
+           } else {
+               header.style.background = 'linear-gradient(135deg, #ff6b9d, #c44569)';
+               header.style.backdropFilter = 'none';
            }
        });
    </script>
